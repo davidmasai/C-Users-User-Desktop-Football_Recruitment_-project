@@ -1,80 +1,77 @@
-# README: Predicting High ROI Players in FIFA 18 Dataset
+# FIFA 18 Player Valuation and High-ROI Scouting
 
-## Project Overview
-This project aims to assist football clubs in **identifying high-ROI (Return on Investment) players** using data-driven scouting strategies. By leveraging the **FIFA 18 dataset**, we develop a predictive model to uncover undervalued talents with high resale potential. The objective is to enable cost-effective recruitment decisions, particularly for clubs with limited budgets, similar to the approach used by **Brentford FC before their 2021 Premier League promotion**.
+## Overview
+This project focuses on **predicting high-ROI (Return on Investment) football players** using the **FIFA 18 dataset**. The objective is to help clubs with limited budgets identify undervalued players with high resale potential. By leveraging **machine learning models and exploratory data analysis (EDA)**, we aim to create a data-driven scouting framework that optimizes player recruitment.
 
 ## Business Understanding
-The transfer market is often inefficient, with clubs overpaying for players while missing hidden gems. **Small and mid-tier clubs must optimize spending by acquiring players with high resale value**—young talents with strong attributes but undervalued in the market. Inspired by **Moneyball principles**, this project seeks to answer:
+Football clubs operate under financial constraints, making data-driven recruitment crucial. The project follows a **Moneyball-inspired approach** to scouting, identifying hidden gems who can provide strong on-field performance and significant future transfer value. We aim to develop a predictive model that estimates player value efficiently, helping clubs **maximize returns on player investments**.
 
-- **Which players provide the best ROI based on their attributes?**
-- **How can we quantify a player's true market value?**
-- **What metrics best predict a player's future worth?**
+## Libraries Used
+The following Python libraries were used for **data manipulation, visualization, and modeling**:
 
-## Data & Methods
-### Dataset
-The project utilizes the **FIFA 18 dataset**, which includes player attributes such as:
-- **General Information**: Name, Age, Nationality, Club, Value, Wage
-- **Technical Attributes**: Dribbling, Passing, Shooting, etc.
-- **Physical Attributes**: Stamina, Acceleration, Strength
-- **Mental Attributes**: Vision, Composure, Work Rate
-- **Defensive Attributes**: Marking, Standing Tackle, Interceptions
+- **Pandas**: Data manipulation and preprocessing
+- **NumPy**: Numerical computations
+- **Matplotlib & Seaborn**: Data visualization
+- **Scikit-learn**: Machine learning modeling and evaluation
+- **Statsmodels**: Regression analysis
+- **XGBoost**: Advanced tree-based modeling
 
-### Target Variable
-The key outcome we aim to predict is **a player's market value (log-transformed for normalization)**.
+## Data & Preprocessing
+### Data Source
+The dataset is derived from **FIFA 18 player statistics**, including key attributes like **Overall, Potential, Age, Value, Wage, and various technical, mental, and physical attributes**.
 
-### Feature Engineering
-To enhance model performance, we engineered new features:
-- **Potential - Overall Difference**: Indicates growth capacity
-- **Percentile-Based Estimation**: Places players in comparative percentiles
-- **Value Efficiency Ratio (VER)**: Compares performance against cost
-- **Position-Specific Attributes**: Weighted attributes based on roles (e.g., a winger’s dribbling vs. a defender’s tackling)
+### Data Cleaning
+- **Handling missing values**: Players with incomplete data were either imputed or removed.
+- **Feature engineering**: Creating aggregate attributes (e.g., **Technical, Mental, Physical attributes**).
+- **Standardizing monetary values**: **Value and Wage were cleaned and scaled** for better model performance.
+- **Log transformation**: Log-transformed **player Value** to handle skewness.
 
-### Data Preprocessing
-- **Handling Missing Values**: Imputation and removal of null data
-- **Standardization**: Features scaled using **StandardScaler**
-- **Log Transformation**: `Value` converted to `log(Value + 1)` to handle skewness
-- **Cleaning Wage Data**: Removing currency symbols (e.g., '€135K') and converting to numerical format
+## Exploratory Data Analysis (EDA)
+EDA was performed to uncover patterns and relationships among key player attributes. Key insights include:
+
+- **High correlation between Potential and Market Value** 📈
+- **Physical attributes are undervalued in player pricing** 🤔
+- **Young players with high Potential but low Overall often present high ROI opportunities** 💡
+
+### Key Visualizations:
+1. **Correlation Heatmap**: Understanding relationships between player attributes and value.
+   ![Correlation Heatmap](images/correlation_heatmap.png)
+2. **Value vs. Age Scatter Plot**: Identifying undervalued young talents.
+   ![Value vs. Age](images/age_and_value.png)
+3. **Wage vs. Value Distribution**: Highlighting wage inefficiencies.
+   ![Wage vs. Value](images/wage_vs_value.png)
+4. **Position-Based ROI Analysis**: Comparing different positions to identify undervalued roles.
+   ![Position-Based ROI](images/position_based_roi.png)
 
 ## Modeling Approach
-We use a stepwise approach:
-1. **Baseline Model**: Linear Regression to establish a reference
-2. **Improved Model**: Decision Tree with hyperparameter tuning
-3. **Fine-Tuned Model**: GridSearch-optimized model for precision improvement
-4. **Feature Selection**: Recursive Feature Elimination (RFE) to refine the most predictive attributes
-5. **Validation**: Cross-validation techniques to ensure model generalization
+We built predictive models to estimate **player value** based on relevant attributes.
+
+### Baseline Model
+- **Linear Regression (Statsmodels)**: Establishing initial relationships between attributes and value.
+
+### Advanced Models
+- **Decision Trees & Random Forests**: Handling non-linearity in player valuation.
+- **XGBoost**: Optimized tree-based model for robust prediction.
+- **GridSearchCV**: Hyperparameter tuning for model improvement.
 
 ### Performance Metrics
-Given our business goal, **precision is prioritized** to minimize false positives (overvaluing poor investments). Key evaluation metrics:
-- **Mean Absolute Error (MAE) & Root Mean Squared Error (RMSE)**
-- **R-Squared (R²) for model explainability**
-- **Feature Importance Scores** to justify selection
+- **R² Score**: Measuring model explanatory power.
+- **Mean Absolute Error (MAE)**: Assessing prediction accuracy.
 
 ## Insights & Application to Scouting
-### Bivariate Analysis & Visualizations
-We analyze key relationships between **player attributes and market value**, using:
-- **Heatmaps**: Show correlation between attributes (e.g., Potential vs. Value)
-- **Boxplots**: Compare high ROI vs. low ROI players across attributes
-- **Scatter Plots**: Value vs. attributes for trend detection
-- **Decision Boundary Visualizations**: Illustrate model classifications
+1. **High-Potential Youngsters**: Identifying **players under 25 with strong attributes** but undervalued market prices.
+2. **Position-Based Value Gaps**: Some positions (e.g., defensive midfielders) tend to be underpriced relative to impact.
+3. **Wage Efficiency**: Clubs can optimize wage-to-value ratio to maximize squad profitability.
+4. **Transfer Market Arbitrage**: Data-driven negotiation strategies based on model predictions.
 
-### How This Helps in Scouting
-- **Identifying Hidden Gems**: Find undervalued players who outperform their market price
-- **Optimized Recruitment**: Filter candidates based on high potential growth at low cost
-- **Position-Specific Insights**: Customize valuation strategies for different roles
-- **Risk Assessment**: Mitigate transfer risks by avoiding overpriced low-ROI players
-
-## Limitations & Future Work
-### Current Limitations
-- **Historical Dataset**: FIFA 18 data may not fully reflect modern trends
-- **Market Dynamics**: External factors like injuries, transfers, and league competitiveness are not modeled
-- **Sample Bias**: Dataset may over-represent certain leagues or positions
-
-### Future Enhancements
-- **Incorporate real-world transfer data** for improved ROI validation
-- **Apply deep learning techniques** (e.g., neural networks for complex patterns)
-- **Expand dataset** to include FIFA 19–21 for temporal validation
+## Future Work
+- **Expanding dataset** to include more historical FIFA editions.
+- **Integrating real-world transfer data** for improved ROI measurement.
+- **Enhancing feature engineering** by including playing style and performance metrics.
+- **Deploying an interactive dashboard** for real-time scouting insights.
 
 ## Conclusion
-This project provides a data-driven framework for football scouting, helping clubs make **informed, cost-effective transfer decisions**. By leveraging advanced analytics, we identify **high-potential, undervalued players** who can yield significant ROI—transforming recruitment strategies in the modern football market.
+This project showcases how **data science can revolutionize football scouting** by providing clubs with actionable insights on **high-ROI player acquisitions**. By combining **EDA, predictive modeling, and business strategy**, we create a **powerful recruitment tool for budget-conscious teams**.
 
-
+---
+🚀 *For code, analysis, and implementation details, check the Jupyter Notebook in this repository!*
