@@ -1,77 +1,71 @@
-# FIFA 18 Player Valuation and High-ROI Scouting
+# FIFA 18 Player Valuation Project
 
-## Overview
-This project focuses on **predicting high-ROI (Return on Investment) football players** using the **FIFA 18 dataset**. The objective is to help clubs with limited budgets identify undervalued players with high resale potential. By leveraging **machine learning models and exploratory data analysis (EDA)**, we aim to create a data-driven scouting framework that optimizes player recruitment.
+## Project Overview
+This project aims to help a football club with a tight budget identify high-potential players with strong resale value. We use data from FIFA 18 to develop a classification model that predicts player profitability.
 
-## Business Understanding
-Football clubs operate under financial constraints, making data-driven recruitment crucial. The project follows a **Moneyball-inspired approach** to scouting, identifying hidden gems who can provide strong on-field performance and significant future transfer value. We aim to develop a predictive model that estimates player value efficiently, helping clubs **maximize returns on player investments**.
+## Business Problem
+Football clubs with limited budgets must make strategic player investments. Identifying undervalued players who can develop and be sold for a profit is crucial. Using historical FIFA 18 data, we apply machine learning techniques to predict which players will yield high resale value.
 
-## Libraries Used
-The following Python libraries were used for **data manipulation, visualization, and modeling**:
+## Data Used
+The dataset includes key attributes such as:
+- Age
+- Overall rating
+- Potential rating
+- Value
+- Wage
+- Special attributes (skills, weak foot, etc.)
+- Position
 
-- **Pandas**: Data manipulation and preprocessing
-- **NumPy**: Numerical computations
-- **Matplotlib & Seaborn**: Data visualization
-- **Scikit-learn**: Machine learning modeling and evaluation
-- **Statsmodels**: Regression analysis
-- **XGBoost**: Advanced tree-based modeling
+## Methodology
+1. **Data Preprocessing:**
+   - Handled missing values
+   - Encoded categorical variables
+   - Scaled numerical features
+   
+2. **Feature Engineering:**
+   - Created percentile-based metrics to evaluate player value efficiency
+   - Used Value Efficiency Ratio (VER) to estimate cost-effectiveness
+   
+3. **Modeling Approach:**
+   - **Baseline Model:** We started with a simple logistic regression model to establish a reference point.
+   - **Decision Tree:** Introduced to capture non-linear patterns in player valuation.
+   - **Random Forest:** Used for improved predictive power and robustness, helping us understand the impact of various features on future resale value.
 
-## Data & Preprocessing
-### Data Source
-The dataset is derived from **FIFA 18 player statistics**, including key attributes like **Overall, Potential, Age, Value, Wage, and various technical, mental, and physical attributes**.
+## Evaluation Metrics
+Since this is a classification problem, we focused primarily on **precision**, ensuring that the model correctly identifies profitable players while minimizing false positives.
 
-### Data Cleaning
-- **Handling missing values**: Players with incomplete data were either imputed or removed.
-- **Feature engineering**: Creating aggregate attributes (e.g., **Technical, Mental, Physical attributes**).
-- **Standardizing monetary values**: **Value and Wage were cleaned and scaled** for better model performance.
-- **Log transformation**: Log-transformed **player Value** to handle skewness.
+## Visualizations & Interpretations
+We generated several visualizations to support our analysis:
 
-## Exploratory Data Analysis (EDA)
-EDA was performed to uncover patterns and relationships among key player attributes. Key insights include:
+### 1. Cluster Analysis of Players
+![Cluster Analysis](images/4_clusters.png)
+- Players were segmented into four clusters based on key attributes like age, potential, and market value.
+- This helped us identify distinct groups of players who might be undervalued gems.
 
-- **High correlation between Potential and Market Value** 📈
-- **Physical attributes are undervalued in player pricing** 🤔
-- **Young players with high Potential but low Overall often present high ROI opportunities** 💡
+### 2. Age vs. Market Value
+![Age vs. Market Value](images/age%20and%20value.webp)
+- Younger players tend to have a higher resale value potential, while older players depreciate quickly.
+- Clubs should prioritize investing in players under 25 to maximize resale opportunities.
 
-### Key Visualizations:
-1. **Correlation Heatmap**: Understanding relationships between player attributes and value.
-   ![Correlation Heatmap](images/correlation_heatmap.png)
-2. **Value vs. Age Scatter Plot**: Identifying undervalued young talents.
-   ![Value vs. Age](images/age_and_value.png)
-3. **Wage vs. Value Distribution**: Highlighting wage inefficiencies.
-   ![Wage vs. Value](images/wage_vs_value.png)
-4. **Position-Based ROI Analysis**: Comparing different positions to identify undervalued roles.
-   ![Position-Based ROI](images/position_based_roi.png)
+### 3. Age Distribution
+![Age Distribution](images/Age%20Distribution.png)
+- The dataset is skewed towards younger players, which aligns with the scouting approach of top clubs.
 
-## Modeling Approach
-We built predictive models to estimate **player value** based on relevant attributes.
+### 4. Average Age vs. Wage and Market Value
+![Average Age vs. Wage and Market Value](images/average%20age%20wage_value.png)
+- Shows how wages and market value change with age.
+- High-value players tend to be in the mid-20s, indicating peak resale potential.
 
-### Baseline Model
-- **Linear Regression (Statsmodels)**: Establishing initial relationships between attributes and value.
+### 5. Average Wage & Value by Rating
+![Average Wage & Value by Rating](images/Average%20Wage_Value%20by%20Rating.png)
+- Highlights how wage scales with a player's overall rating.
+- Some players may be overpaid relative to their resale potential.
 
-### Advanced Models
-- **Decision Trees & Random Forests**: Handling non-linearity in player valuation.
-- **XGBoost**: Optimized tree-based model for robust prediction.
-- **GridSearchCV**: Hyperparameter tuning for model improvement.
-
-### Performance Metrics
-- **R² Score**: Measuring model explanatory power.
-- **Mean Absolute Error (MAE)**: Assessing prediction accuracy.
-
-## Insights & Application to Scouting
-1. **High-Potential Youngsters**: Identifying **players under 25 with strong attributes** but undervalued market prices.
-2. **Position-Based Value Gaps**: Some positions (e.g., defensive midfielders) tend to be underpriced relative to impact.
-3. **Wage Efficiency**: Clubs can optimize wage-to-value ratio to maximize squad profitability.
-4. **Transfer Market Arbitrage**: Data-driven negotiation strategies based on model predictions.
-
-## Future Work
-- **Expanding dataset** to include more historical FIFA editions.
-- **Integrating real-world transfer data** for improved ROI measurement.
-- **Enhancing feature engineering** by including playing style and performance metrics.
-- **Deploying an interactive dashboard** for real-time scouting insights.
+### 6. Overall & Potential vs. Age
+![Overall & Potential vs. Age](images/Overall%20and%20Potential%20vs%20Age.png)
+- Players with high potential tend to be younger, reinforcing the importance of scouting for future growth.
 
 ## Conclusion
-This project showcases how **data science can revolutionize football scouting** by providing clubs with actionable insights on **high-ROI player acquisitions**. By combining **EDA, predictive modeling, and business strategy**, we create a **powerful recruitment tool for budget-conscious teams**.
-
----
-🚀 *For code, analysis, and implementation details, check the Jupyter Notebook in this repository!*
+- **Precision was the key metric**, ensuring we minimize investment in unprofitable players.
+- **Random forest provided better insights** into which features drive future resale value.
+- **Investing in young, high-potential players is the best strategy for financial sustainability.
