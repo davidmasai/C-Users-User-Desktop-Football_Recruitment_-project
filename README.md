@@ -41,7 +41,8 @@ Correlation between features
   - Even after Tuning and SMOTE was applied to balance the training data, the imbalance still affects the performance.
   - The model shows excellent recall for the minority class (hidden gems), but precision suffers, leading to many false positives for class 1.
   - the Confusion Matrix :
-  ![the Confusion Matrix]([images/confusion%20matrix%20model%201%20tuned.png)]
+    
+  ![the Confusion Matrix](images/confusion%20matrix%20model%201%20tuned.png)
 
 #### Overfitting Analysis
 - **Training Performance:** Precision for Class 1 is 0.50, Recall for Class 1 is 1.00.
