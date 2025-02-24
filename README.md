@@ -36,8 +36,12 @@ Correlation between features
   - Logistic Regression is a linear model used for binary classification. It uses a sigmoid function to predict probabilities and assigns class labels based on a threshold.
   - **Why Start Here?** It's a great starting point for classification tasks as it’s easy to implement, understand, and interpret. You can gauge the baseline performance and establish benchmarks.
   - **Predictors:** Age, Potential, Overall, Wage
-  - **Initial Performance:** Accuracy: 98%, Precision: 98%, Recall: 1.00
+  - **Initial Performance:** Accuracy: 98%, Precision: 98%, Recall: 1.00 due to class imbalance
   - Addressed class imbalance using SMOTE.
+  - Even after Tuning and SMOTE was applied to balance the training data, the imbalance still affects the performance.
+  - The model shows excellent recall for the minority class (hidden gems), but precision suffers, leading to many false positives for class 1.
+  - the Confusion Matrix :
+  ![the Confusion Matrix]([images/confusion%20matrix%20model%201%20tuned.png)]
 
 #### Overfitting Analysis
 - **Training Performance:** Precision for Class 1 is 0.50, Recall for Class 1 is 1.00.
