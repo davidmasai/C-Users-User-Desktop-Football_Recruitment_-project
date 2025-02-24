@@ -29,6 +29,8 @@ The dataset includes key attributes such as:
 - **Hidden Gem Metric:** Identifies players who perform well in terms of Adjusted VER, Market Value Efficiency, and Value-for-Money Index, while being undervalued.
 
 ### 3. Modeling Approach
+Correlation between features
+![Feature Correlations](images/feature correlation.png)
 #### Baseline Model
 - **Logistic Regression:** Start with Logistic Regression because it's a simple model that offers a good baseline.
   - Logistic Regression is a linear model used for binary classification. It uses a sigmoid function to predict probabilities and assigns class labels based on a threshold.
