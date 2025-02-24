@@ -30,7 +30,7 @@ The dataset includes key attributes such as:
 
 ### 3. Modeling Approach
 Correlation between features
-![Feature Correlations]([images/feature correlation.png](https://github.com/davidmasai/C-Users-User-Desktop-Football_Recruitment_-project/blob/main/images/feature%20correlation.png))
+![Feature Correlations]([images/feature correlation.png](images/feature%20correlation.png))
 #### Baseline Model
 - **Logistic Regression:** Start with Logistic Regression because it's a simple model that offers a good baseline.
   - Logistic Regression is a linear model used for binary classification. It uses a sigmoid function to predict probabilities and assigns class labels based on a threshold.
