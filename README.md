@@ -44,10 +44,6 @@ Correlation between features
     
   ![the Confusion Matrix](images/confusion%20matrix%20model%201%20tuned.png)
 
-#### Overfitting Analysis
-- **Training Performance:** Precision for Class 1 is 0.50, Recall for Class 1 is 1.00.
-- **Indicators of Overfitting:** High recall for class 1 in training but poor precision.
-
 #### Decision Tree
 - Captures non-linear patterns in player valuation.
 - **Why Transition to Decision Trees?** When Logistic Regression doesn’t capture the complexity of the data (linear relationships), Decision Trees provide a better fit.
