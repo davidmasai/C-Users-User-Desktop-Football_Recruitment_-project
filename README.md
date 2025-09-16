@@ -4,7 +4,8 @@
 This project aims to help football clubs with tight budgets identify high-potential players with strong resale value. We use data from FIFA 18 to develop a classification model that predicts player profitability.
 
 ## Business Problem
-Football clubs with limited budgets must make strategic player investments. Identifying undervalued players who can develop and be sold for a profit is crucial. Using historical FIFA 18 data, we apply machine learning techniques to predict which players will yield high resale value.
+Football clubs with limited budgets must make strategic player investments. Identifying undervalued players who can develop and be sold for a profit is crucial. Using historical FIFA 18 data, we apply machine learning techniques to predict which players will yield high resale value. We take the current value and try to predict the future reslae value 
+
 
 ## Data Used
 The dataset includes key attributes such as:
